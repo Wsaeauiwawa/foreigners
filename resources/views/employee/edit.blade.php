@@ -149,7 +149,7 @@
                             <br>
                             <input type="hidden" name="old_image" value="{{$employees->photo}}">
                             <div class="form-group">
-                                <img src="{{asset($employees->photo)}}" alt="" width="200px" height="200px">
+                                <img src="{{asset('employees/photos/'.$employees->photo_file)}}"  width="200px" height="200px">
                             </div>
                         </div>
                         <!-- <div class="col-md-6">

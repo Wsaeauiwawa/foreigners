@@ -79,10 +79,10 @@ class EmployeeController extends Controller
         //dd($employment_path);
 
         $photo = $request->file('photo');   //encryption
-        $name_gen = time() . '_' . $photo->getClientOriginalName();   //Generate name
+        $photo_name = time() . '_' . $photo->getClientOriginalName();   //Generate name
         $upload_location = 'employees/photos/'; //location
-        $photo_path = $upload_location . $name_gen;    //path
-        $photo->move($upload_location, $name_gen);
+        $photo_path = $upload_location . $photo_name;    //path
+        $photo->move($upload_location, $photo_name);
 
         $dob = $request->dob;
         $age = Carbon::parse($dob)->age;
@@ -109,7 +109,8 @@ class EmployeeController extends Controller
             'education_path' => $education_path,
             'employment_file' => $employment_name,
             'employment_path' => $employment_path,
-            'photo' => $photo_path
+            'photo_file' => $photo_name,
+            'photo_path' => $photo_path
         ]);
 
         return redirect()->route('employees')->with('success', 'Created Successfully');
@@ -173,7 +174,6 @@ class EmployeeController extends Controller
             $education_name = time() . '_' . $education_file->getClientOriginalName();
             $education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
 
-
             $employment = Employee::find($Eid)->employment_file;
             unlink(storage_path('app/file/employees/employment_certificate/' . $employment));
             $employment_name = time() . '_' . $employment_file->getClientOriginalName();
@@ -217,16 +217,8 @@ class EmployeeController extends Controller
             unlink($old_image);
             $photo->move($upload_location, $name_gen);
             return redirect()->route('employees')->with('success', "Updated  all attrachments successfully");
-        } elseif ($job_file){
-            $job = Employee::find($Eid)->job_file;
-            unlink(storage_path('app/file/employees/job_description/' . $job));
-            $job_name = time() . '_' . $job_file->getClientOriginalName();
-            $job_path = $job_file->storeAs('file/employees/job_description', $job_name);
 
-
-        }
-        
-        /*else {
+        } else {
 
             $dob = $request->dob;
             $age = Carbon::parse($dob)->age;
@@ -245,7 +237,7 @@ class EmployeeController extends Controller
                 'address' => $request->address,
             ]);
             return redirect()->route('employees')->with('success', "Updated Successfully");
-        }*/
+        }
     }
 
     public function delete($Eid)

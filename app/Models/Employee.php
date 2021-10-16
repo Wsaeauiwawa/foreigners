@@ -32,7 +32,8 @@ class Employee extends Model
         'education_path',
         'employment_file',
         'employment_path',
-        'photo',
+        'photo_file',
+        'photo_path',
         'status',
         'submit_name'
 
