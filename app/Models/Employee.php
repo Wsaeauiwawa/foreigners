@@ -34,6 +34,8 @@ class Employee extends Model
         'employment_path',
         'photo_file',
         'photo_path',
+        'other_file',
+        'other_path',
         'status',
         'submit_name'
 

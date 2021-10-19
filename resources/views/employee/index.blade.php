@@ -19,12 +19,14 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Name</th>
                     <th scope="col">Date of birth</th>
                     <th scope="col">Age</th>
                     <th scope="col">Place of birth</th>
                     <th scope="cal">Resume</th>
-                    <th scope="col">Submit date</th>
+                    <th scope="cal">Photo</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -32,15 +34,17 @@
                 @foreach($employees as $row)
                 <tr>
                     <th>{{$row->Eid}}</th>
+                    <td>{{$row->title}}</td>
                     <td>{{$row->name_eng}}</td>
                     <td>{{$row->dob}}</td>
                     <td>{{$row->age}}</td>
                     <td>{{$row->pob}}</td>
                     <td>{{$row->resume_file}}</td>
-                    <td>{{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}</td>
+                    <td><img src="{{asset('employees/photos/'.$row->photo_file)}}" width="100px" height="100px"></td>
+                    <td>{{Carbon\Carbon::parse($row->created_at)->format('d/m/Y')}}</td>
                     <td>
+                        <a href="{{url('/employee/show/'.$row->Eid)}}" class="btn btn-success"><i class="fas fa-eye"></i></a>
                         <a href="{{url('/employee/edit/'.$row->Eid)}}" class="btn btn-warning"><i class="fas fa-pen"></i></a>
-                        <a href="{{url('/employee/delete/'.$row->Eid)}}" class="btn btn-danger" onclick="return confirm('Do you want to delete?')"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 @endforeach
