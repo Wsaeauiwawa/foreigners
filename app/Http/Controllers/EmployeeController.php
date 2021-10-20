@@ -62,23 +62,38 @@ class EmployeeController extends Controller
         if ($job_file && $organization_file && $resume_file && $education_file && $employment_file && $photo && $other_file) {
 
             $job_name = time() . '_' . $job_file->getClientOriginalName();
-            $job_path = $job_file->storeAs('file/employees/job_description', $job_name);
+            $upload_location = 'employees/job_description/'; //location
+            $job_path = $upload_location . $job_name;    //path
+            $job_file->move($upload_location, $job_name);
+            //$job_path = $job_file->storeAs('file/employees/job_description', $job_name);
             //dd($job_name);
 
             $organization_name = time() . '_' . $organization_file->getClientOriginalName();
-            $organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
+            $upload_location = 'employees/organization_chart/'; //location
+            $organization_path = $upload_location . $organization_name;    //path
+            $organization_file->move($upload_location, $organization_name);
+            //$organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
             //dd($organization_path);
 
             $resume_name = time() . '_' . $resume_file->getClientOriginalName();
-            $resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
+            $upload_location = 'employees/resume/'; //location
+            $resume_path = $upload_location . $resume_name;    //path
+            $resume_file->move($upload_location, $resume_name);
+            //$resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
             //dd($resume_path);
 
             $education_name = time() . '_' . $education_file->getClientOriginalName();
-            $education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
+            $upload_location = 'employees/education_certificate/'; //location
+            $education_path = $upload_location . $education_name;    //path
+            $education_file->move($upload_location, $education_name);
+            //$education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
             //dd($education_path);
 
             $employment_name = time() . '_' . $employment_file->getClientOriginalName();
-            $employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
+            $upload_location = 'employees/employment_certificate/'; //location
+            $employment_path = $upload_location . $employment_name;    //path
+            $employment_file->move($upload_location, $employment_name);
+            //$employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
             //dd($employment_path);
 
             $photo_name = time() . '_' . $photo->getClientOriginalName();   //Generate name
@@ -87,7 +102,10 @@ class EmployeeController extends Controller
             $photo->move($upload_location, $photo_name);
 
             $other_name = time() . '_' . $other_file->getClientOriginalName();
-            $other_path = $other_file->storeAs('file/employees/other', $other_name);
+            $upload_location = 'employees/other/'; //location
+            $other_path = $upload_location . $other_name;    //path
+            $other_file->move($upload_location, $other_name);
+            //$other_path = $other_file->storeAs('file/employees/other', $other_name);
 
             $dob = $request->dob;
             $age = Carbon::parse($dob)->age;
@@ -124,23 +142,38 @@ class EmployeeController extends Controller
         } elseif ($job_file && $organization_file && $resume_file && $education_file && $employment_file && $photo) {
 
             $job_name = time() . '_' . $job_file->getClientOriginalName();
-            $job_path = $job_file->storeAs('file/employees/job_description', $job_name);
+            $upload_location = 'employees/job_description/'; //location
+            $job_path = $upload_location . $job_name;    //path
+            $job_file->move($upload_location, $job_name);
+            //$job_path = $job_file->storeAs('file/employees/job_description', $job_name);
             //dd($job_name);
 
             $organization_name = time() . '_' . $organization_file->getClientOriginalName();
-            $organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
+            $upload_location = 'employees/organization_chart/'; //location
+            $organization_path = $upload_location . $organization_name;    //path
+            $organization_file->move($upload_location, $organization_name);
+            //$organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
             //dd($organization_path);
 
             $resume_name = time() . '_' . $resume_file->getClientOriginalName();
-            $resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
+            $upload_location = 'employees/resume/'; //location
+            $resume_path = $upload_location . $resume_name;    //path
+            $resume_file->move($upload_location, $resume_name);
+            //$resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
             //dd($resume_path);
 
             $education_name = time() . '_' . $education_file->getClientOriginalName();
-            $education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
+            $upload_location = 'employees/education_certificate/'; //location
+            $education_path = $upload_location . $education_name;    //path
+            $education_file->move($upload_location, $education_name);
+            //$education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
             //dd($education_path);
 
             $employment_name = time() . '_' . $employment_file->getClientOriginalName();
-            $employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
+            $upload_location = 'employees/employment_certificate/'; //location
+            $employment_path = $upload_location . $employment_name;    //path
+            $employment_file->move($upload_location, $employment_name);
+            //$employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
             //dd($employment_path);
 
             $photo_name = time() . '_' . $photo->getClientOriginalName();   //Generate name
@@ -188,12 +221,6 @@ class EmployeeController extends Controller
         $headcount = Headcount::all();
         return view('employee.view', compact('data', 'headcount', 'employees'));
     }
-
-    // public function pdf($Eid)
-    // {
-    //     $employees = Employee::find($Eid);
-    //     return view('employee.pdf', compact('employees'));
-    // }
 
     public function edit($Eid)
     {
@@ -254,9 +281,13 @@ class EmployeeController extends Controller
 
         } elseif ($job_file) {
             $job = Employee::find($Eid)->job_file;
-            unlink(storage_path('app/file/employees/job_description/' . $job));
+            unlink(public_path('employees/job_description/' . $job));
             $job_name = time() . '_' . $job_file->getClientOriginalName();
-            $job_path = $job_file->storeAs('file/employees/job_description', $job_name);
+            $upload_location = 'employees/job_description/'; //location
+            $job_path = $upload_location . $job_name;    //path
+            $job_file->move($upload_location, $job_name);
+            //unlink(storage_path('app/file/employees/job_description/' . $job));
+            //$job_path = $job_file->storeAs('file/employees/job_description', $job_name);
 
             Employee::find($Eid)->update([
                 'job_file' => $job_name,
@@ -266,9 +297,13 @@ class EmployeeController extends Controller
 
         } elseif ($organization_file) {
             $organization = Employee::find($Eid)->organization_file;
-            unlink(storage_path('app/file/employees/organization_chart/' . $organization));
+            unlink(public_path('employees/organization_chart/' . $organization));
             $organization_name = time() . '_' . $organization_file->getClientOriginalName();
-            $organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
+            $upload_location = 'employees/organization_chart/'; //location
+            $organization_path = $upload_location . $organization_name;    //path
+            $organization_file->move($upload_location, $organization_name);
+            //unlink(storage_path('app/file/employees/organization_chart/' . $organization));
+            //$organization_path = $organization_file->storeAs('file/employees/organization_chart', $organization_name);
 
             Employee::find($Eid)->update([
                 'organization_file' => $organization_name,
@@ -278,9 +313,13 @@ class EmployeeController extends Controller
 
         } elseif ($resume_file){
             $resume = Employee::find($Eid)->resume_file;
-            unlink(storage_path('app/file/employees/resume/' . $resume));
+            unlink(public_path('employees/resume/' . $resume));
             $resume_name = time() . '_' . $resume_file->getClientOriginalName();
-            $resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
+            $upload_location = 'employees/resume/'; //location
+            $resume_path = $upload_location . $resume_name;    //path
+            $resume_file->move($upload_location, $resume_name);
+            //unlink(storage_path('app/file/employees/resume/' . $resume));
+            //$resume_path = $resume_file->storeAs('file/employees/resume', $resume_name);
 
             Employee::find($Eid)->update([
                 'resume_file' => $resume_name,
@@ -290,9 +329,14 @@ class EmployeeController extends Controller
 
         } elseif ($education_file) {
             $education = Employee::find($Eid)->education_file;
-            unlink(storage_path('app/file/employees/education_certificate/' . $education));
+            unlink(public_path('employees/education_certificate/' . $education));
+            //unlink(storage_path('app/file/employees/education_certificate/' . $education));
             $education_name = time() . '_' . $education_file->getClientOriginalName();
-            $education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
+            $upload_location = 'employees/education_certificate/'; //location
+            $education_path = $upload_location . $education_name;    //path
+            $education_file->move($upload_location, $education_name);
+
+           // $education_path = $education_file->storeAs('file/employees/education_certificate', $education_name);
 
             Employee::find($Eid)->update([
                 'education_file' => $education_name,
@@ -302,9 +346,14 @@ class EmployeeController extends Controller
             
         } elseif ($employment_file) {
             $employment = Employee::find($Eid)->employment_file;
-            unlink(storage_path('app/file/employees/employment_certificate/' . $employment));
+            //unlink(storage_path('app/file/employees/employment_certificate/' . $employment));
             $employment_name = time() . '_' . $employment_file->getClientOriginalName();
-            $employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
+            unlink(public_path('employees/employment_certificate/' . $employment));
+            $upload_location = 'employees/employment_certificate/'; //location
+            $employment_path = $upload_location . $employment_name;    //path
+            $employment_file->move($upload_location, $employment_name);
+
+            //$employment_path = $employment_file->storeAs('file/employees/employment_certificate', $employment_name);
 
             Employee::find($Eid)->update([
                 'employment_file' => $employment_name,
@@ -315,9 +364,13 @@ class EmployeeController extends Controller
         }elseif ($other_file) {
 
             $other = Employee::find($Eid)->other_file;
-            unlink(storage_path('app/file/employees/other/' . $other));
+            unlink(public_path('employees/other/' . $other));
+            //unlink(storage_path('app/file/employees/other/' . $other));
             $other_name = time() . '_' . $other_file->getClientOriginalName();
-            $other_path = $other_file->storeAs('file/employees/other', $other_name);
+            $upload_location = 'employees/other/'; //location
+            $other_path = $upload_location . $other_name;    //path
+            $other_file->move($upload_location, $other_name);
+            //$other_path = $other_file->storeAs('file/employees/other', $other_name);
 
             Employee::find($Eid)->update([
                 'other_file' => $other_name,

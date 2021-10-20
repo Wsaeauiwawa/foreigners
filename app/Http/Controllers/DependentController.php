@@ -15,10 +15,5 @@ class DependentController extends Controller
         $dependents = Dependent::paginate(25);
         return view('dependents.index', compact('dependents'));
     }
-    public function create()
-    {
-
-        $data = Nationality::all();
-        return view('dependents.create', ['data' => $data]);
-    }
+   
 }

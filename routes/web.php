@@ -40,10 +40,8 @@ Route::get('/employee/all',[EmployeeController::class, 'index'])->name('employee
 Route::get('/employee/create',[EmployeeController::class, 'create'])->name('createEmployee');
 Route::post('/employee/add',[EmployeeController::class, 'store'])->name('addEmployee');
 Route::get('/employee/show/{Eid}',[EmployeeController::class,'show']);
-//Route::get('/employee/pdf/{Eid}',[EmployeeController::class,'pdf']);
 Route::get('/employee/edit/{Eid}',[EmployeeController::class,'edit']);
 Route::post('/employee/update/{Eid}',[EmployeeController::class,'update']);
 
 //Department
 Route::get('/dependent/all',[DependentController::class, 'index'])->name('dependents');
-Route::get('/dependent/create',[DependentController::class, 'create'])->name('createDependent');

@@ -283,6 +283,7 @@
                         </div>
                         
                         <div class="d-flex justify-content-center">
+                            {{-- <a href="{{route('employees')}}" class="btn btn-primary"><i class="fas fa-chevron-left"> Back</i></a> --}}
                             <input class="btn btn-success" type="submit" value="Submit" style="margin-left: 10px;">
                         </div>
 

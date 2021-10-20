@@ -8,3 +8,9 @@ function getDependent() {
     }
     
 }
+
+/*function getOther() {
+     var other = document.getElementById("myText").value;
+     console.log(other);
+    
+}*/
