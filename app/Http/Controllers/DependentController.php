@@ -19,7 +19,6 @@ class DependentController extends Controller
     {
 
         $data = Nationality::all();
-        $headcount = Headcount::all();
-        return view('dependents.create', ['data' => $data], ['headcount' => $headcount]);
+        return view('dependents.create', ['data' => $data]);
     }
 }

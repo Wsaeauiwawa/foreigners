@@ -159,7 +159,7 @@
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
-                                {{-- <script src="{{asset('/public/js/index.js')}}"></script> --}}
+                                <script src="{{asset('js/index.js/')}}"></script>
                             </div>
                         </div>
                         <div class="d-flex justify-content-start">
@@ -173,8 +173,9 @@
             </div>
         </div>
 
-        <!--ddependents form-->
-        <div class="col-md-12 d-none" style=" margin-top: 30px;">
+
+        <!--dependents form-->
+        <div class="col-md-12" style=" margin-top: 10px; display:none;" id="form">
             <div class="card" style="bottom: 20px;">
                 <div class="card-header">Session 2 Dependent</div>
                 <div class="card-body">
@@ -281,9 +282,8 @@
                             @enderror --}}
                         </div>
                         
-                        <div class="d-flex justify-content-start">
-                            <a href="{{route('dependents')}}" class="btn btn-primary"><i class="fas fa-chevron-left"> Back</i></a>
-                            <input class="btn btn-success" type="submit" value="Save" style="margin-left: 10px;">
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-success" type="submit" value="Submit" style="margin-left: 10px;">
                         </div>
 
                     </form>
@@ -292,7 +292,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 @endsection

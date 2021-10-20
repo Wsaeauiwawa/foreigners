@@ -101,7 +101,7 @@
                         <div class="col-md-4">
                             <label for="job">Job Description</label>
                             <input type="file" class="form-control" name="job" value="{{$employees->job}}" readonly>
-                            <a href="{{asset('storage/app/file/employees/job_description/'.$employees->job_file)}}" target="_blank">{{$employees->job_file}}</a>
+                            <a href="{{url('storage/app/file/employees/job_description/'.$employees->job_file)}}" target="_blank">{{$employees->job_file}}</a>
                             @error('job_description')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
