@@ -2,9 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-2">
         <div class="col-md-12">
-            <h2>Foreigner Visa and Work Permit System</h2>
             <a href="{{route('createEmployee')}}" class="btn btn-success"><i class="fas fa-plus"> New</i></a>
         </div>
     </div>
@@ -13,7 +12,7 @@
         <div class="alert alert-success">{{session('success')}}</div>
         @endif
     </div>
-    <div class="card mt-2">
+    <div class="card mt-2" style="margin-bottom: 20px;">
         <div class="card-header">Employee</div>
         <table class="table">
             <thead>
@@ -43,8 +42,7 @@
                     <td><img src="{{asset('employees/photos/'.$row->photo_file)}}" width="100px" height="100px"></td>
                     <td>{{Carbon\Carbon::parse($row->created_at)->format('d/m/Y')}}</td>
                     <td>
-                        <a href="{{url('/employee/show/'.$row->Eid)}}" class="btn btn-success"><i class="fas fa-eye"></i></a>
-                        <a href="{{url('/employee/edit/'.$row->Eid)}}" class="btn btn-warning"><i class="fas fa-pen"></i></a>
+                        <a href="{{url('/employee/edit/'.$row->Eid)}}" class="btn btn-warning"><i class="fas fa-pen"> Edit</i></a>
                     </td>
                 </tr>
                 @endforeach

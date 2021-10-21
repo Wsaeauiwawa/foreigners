@@ -406,7 +406,7 @@
 </head>
 
 <body class="antialiased">
-    @extends('layouts.layout');
+    @extends('layouts.layout')
 
     @section('content')
 

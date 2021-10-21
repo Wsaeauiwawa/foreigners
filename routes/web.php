@@ -39,9 +39,10 @@ Route::get('/headcount/delete/{count_id}',[HeadcountController::class,'delete'])
 Route::get('/employee/all',[EmployeeController::class, 'index'])->name('employees');
 Route::get('/employee/create',[EmployeeController::class, 'create'])->name('createEmployee');
 Route::post('/employee/add',[EmployeeController::class, 'store'])->name('addEmployee');
-Route::get('/employee/show/{Eid}',[EmployeeController::class,'show']);
 Route::get('/employee/edit/{Eid}',[EmployeeController::class,'edit']);
 Route::post('/employee/update/{Eid}',[EmployeeController::class,'update']);
 
 //Department
 Route::get('/dependent/all',[DependentController::class, 'index'])->name('dependents');
+Route::get('/dependent/create',[DependentController::class, 'create'])->name('createDependent');
+//Route::post('/dependent/add',[DependentController::class, 'store'])->name('addDependent');
